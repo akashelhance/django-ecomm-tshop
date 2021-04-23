@@ -1,6 +1,6 @@
 
 {% extends "./base.html" %}
-
+{% load tshirt_tags %}
 
 {% block content %}
 
@@ -17,15 +17,20 @@
             <div class="card-body">
               <h5 class="card-title">{{tshirt.name|title}}</h5>
 
-            <span class="text-danger"><del>
+            <span class="text-danger"><del> {% min_price tshirt as result %}
+                  {{result|rupee}}
 
                 </del></span>
+              &nbsp;
+              <span>{% sale_price tshirt as sale_price_result %}{{sale_price_result|rupee}}</span>
+              <span class="float-right badge badge-info">Save {{tshirt.discount}}%</span>
               
              
             </div>
 
             <div class="card-footer p-0">
-              <a href="" class="btn btn-light btn-block">See More</a>
+         
+              <a href="/product/{{tshirt.id}}" class="btn btn-light btn-block">See More</a>
             </div>
           </div>
         </div>

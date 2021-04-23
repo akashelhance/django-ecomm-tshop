@@ -6,6 +6,16 @@ from django.contrib.auth import authenticate, login as LoginDjango, logout
 from store.models import Tshirt
 
 # Create your views here.
+
+def showproduct(request, id):
+    tshirt =Tshirt.objects.get(id=id)
+    context ={
+        "tshirt": tshirt
+    }
+    return render(request, template_name='store/product_details.html',  context= context)
+    
+     
+
 def home(request):
     print(request.user)
     tshirts = Tshirt.objects.all()
