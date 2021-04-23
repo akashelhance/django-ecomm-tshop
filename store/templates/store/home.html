@@ -4,7 +4,41 @@
 
 {% block content %}
 
+<div class="container">
 
-<h1>Hello</h1>
+<h3 class="text-center"> Shirts</h3>
+<hr>
+<div class="row">
+{% for tshirt in tshirts %}
+     
+        <div class="col-4 mx-auto mt-2">
+          <div class="card h-100" style="width: 18rem;">
+            <img class="card-img-top" src="{{tshirt.image.url}}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{tshirt.name|title}}</h5>
+
+            <span class="text-danger"><del>
+
+                </del></span>
+              
+             
+            </div>
+
+            <div class="card-footer p-0">
+              <a href="" class="btn btn-light btn-block">See More</a>
+            </div>
+          </div>
+        </div>
+
+     
+
+    
+ {% endfor %}
+
+</div>
+
+</div>
+
+
 
 {% endblock %}

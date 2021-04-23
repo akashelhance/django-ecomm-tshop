@@ -3,11 +3,19 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from .forms.authforms import CustomerCreationForm, CustomerAuthForm
 from django.contrib.auth import authenticate, login as LoginDjango, logout
+from store.models import Tshirt
 
 # Create your views here.
 def home(request):
     print(request.user)
-    return render(request, template_name='store/home.html')
+    tshirts = Tshirt.objects.all()
+    print(len(tshirts)) 
+
+    
+    context ={
+        "tshirts": tshirts
+    }
+    return render(request, template_name='store/home.html',  context= context)
 
 def cart(request):
     return render(request, template_name='store/cart.html')
